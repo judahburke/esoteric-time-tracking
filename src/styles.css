@@ -1,0 +1,70 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.parallax {
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-image: url(https://get.pxhere.com/photo/watch-hand-wheel-clock-time-hour-alarm-gauge-furniture-decor-date-clocks-countdown-management-schedule-deadline-man-made-object-home-accessories-835791.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero {
+    transform: translateZ(-1px) scale(2);
+    margin-bottom: 50vh;
+}
+
+main {
+    background-color: white;
+    transform: translateZ(0);
+    min-height: 100vh;
+}
+
+aside {
+    background-color: white;
+    transform: translateZ(0);
+    margin-bottom: 30vh;
+}
+
+.entry-card {
+    margin-bottom: 1.5rem;
+}
+
+#fixedButtons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#fixedButtons .button {
+    width: 150px;
+}
+
+.card-content .content {
+    position: relative;
+}
+
+.card-content .content .edit-entry {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+}
+
+.card-content .content:hover .edit-entry {
+    display: block;
+}

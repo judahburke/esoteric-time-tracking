@@ -1,0 +1,22 @@
+{
+  "devDependencies": {
+    "@types/chart.js": "^2.9.41",
+    "parcel": "^2.12.0",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.3"
+  },
+  "name": "esoteric-time-tracking",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Judah Burke",
+  "license": "ISC",
+  "description": ""
+}

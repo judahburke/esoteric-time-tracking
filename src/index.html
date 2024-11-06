@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Time Tracker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="parallax">
+        <header class="hero is-primary" role="banner">
+            <div class="hero-body">
+                <h1 class="title">Work Time Tracker</h1>
+            </div>
+    </header>
+        <aside class="section" role="presentation">
+            <div class="container">
+                <form id="search-form">
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" id="search-input" type="text" placeholder="Search by Project Link (i.e. https://dev.azure.com/sales-flow-iq/SalesFlowIQ/_workitems/edit/...)">
+                        </div>
+                        <div class="control">
+                            <button class="button is-info" type="submit">Search</button>
+                        </div>
+                    </div>
+                    <span id="search-result"></span>
+                </form>
+                <section id="summary" aria-labelledby="summary-heading">
+                    <h2 id="summary-heading" class="title is-4">Hours Logged</h2>
+                    <canvas id="summaryChart" aria-label="Project summary chart" role="img"></canvas>
+                </section>
+            </div>
+        </aside>
+        <main class="section" role="main">
+            <div class="container">
+                <section id="timeEntries" aria-labelledby="entries-heading">
+                    <h2 id="entries-heading" class="title is-4">Time Entries</h2>
+                    <div id="entryList" role="list"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <div id="fixedButtons" class="buttons" role="group" aria-label="Action buttons">
+        <button id="saveBtn" class="button is-success" type="button">Save</button>
+        <button id="exportBtn" class="button is-info" type="button">Export to CSV</button>
+        <button id="importBtn" class="button is-warning" type="button">Import from CSV</button>
+        <input type="file" id="fileInput" accept=".csv" style="display: none;">
+        <button id="scrollTopBtn" class="button is-light" type="button">Scroll to Top</button>
+        <button id="scrollCurrentBtn" class="button is-light" type="button">Scroll to Current</button>
+    </div>
+    <script type="module" src="./app.ts"></script>
+</body>
+</html>

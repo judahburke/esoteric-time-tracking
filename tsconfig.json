@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "target": "ES2015",
+      "module": "ES2015",
+      "strict": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "sourceMap": true,
+      "declaration": false,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "lib": ["ES2015", "DOM", "DOM.Iterable"],
+      "noImplicitAny": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+  }
