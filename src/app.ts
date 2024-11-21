@@ -380,6 +380,7 @@ class WorkTimeTracker {
                     }
                 }
             } as ChartConfiguration);
+            this.chartInstance.resize(500, 200);
         };
     }
 
@@ -417,7 +418,6 @@ class WorkTimeTracker {
 
         const transaction = this.db.transaction(['timeEntries'], 'readonly');
         const objectStore = transaction.objectStore('timeEntries');
-        console.log(objectStore.indexNames);
         const index = objectStore.index('link');
         const request = index.getAll(IDBKeyRange.only(projectLink));
 

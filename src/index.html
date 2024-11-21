@@ -16,6 +16,10 @@
     </header>
         <aside class="section" role="presentation">
             <div class="container">
+                <section id="summary" aria-labelledby="summary-heading">
+                    <h2 id="summary-heading" class="title is-4">Hours Logged</h2>
+                    <canvas id="summaryChart" aria-label="Project summary chart" role="img" style="max-height:200px"></canvas>
+                </section>
                 <form id="search-form">
                     <div class="field has-addons">
                         <div class="control is-expanded">
@@ -27,10 +31,6 @@
                     </div>
                     <span id="search-result"></span>
                 </form>
-                <section id="summary" aria-labelledby="summary-heading">
-                    <h2 id="summary-heading" class="title is-4">Hours Logged</h2>
-                    <canvas id="summaryChart" aria-label="Project summary chart" role="img"></canvas>
-                </section>
             </div>
         </aside>
         <main class="section" role="main">
