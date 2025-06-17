@@ -1,6 +1,7 @@
 console.log("Hello from TypeScript!");
 
 import { Chart, ChartConfiguration } from 'chart.js/auto';
+import dayjs from 'dayjs';
 
 interface TimeEntry {
     id?: number;
@@ -95,28 +96,28 @@ class WorkTimeTracker {
 
         entryList.innerHTML = '';
         const groupedEntries = this.groupEntriesByDate(entries);
-        const today = new Date();
+        const today = dayjs();
         const showWeekends = false;
 
-        for (let i = 0; i < 8; i++) {
-            const d = new Date(today.getTime() - i * 24 * 60 * 60 * 1000);
-            const day = d.getDay();
-            if (!showWeekends && (day === 0 || day === 6)) {
+        for (let i = 0; i < 30; i++) {
+            const preDay = today.subtract(i, 'day');
+            const dayOfWeek = preDay.day();
+            if (!showWeekends && (dayOfWeek === 0 || dayOfWeek === 6)) {
                 continue;
             }
-            const date = d.toISOString().split('T')[0];
-            const dateEntries = groupedEntries.get(date) || [];
+            const dateStamp = preDay.format('YYYY-MM-DD');
+            const dateEntries = groupedEntries.get(dateStamp) || [];
 
             const card = document.createElement('div');
             card.className = 'card entry-card';
-            card.setAttribute('data-date', date);
+            card.setAttribute('data-date', dateStamp);
             card.setAttribute('role', 'listitem');
             
             const totalHours = dateEntries.reduce((sum, entry) => sum + entry.hours, 0);
             
             card.innerHTML = `
                 <header class="card-header">
-                    <p class="card-header-title">${date} (${totalHours}/8 hours)</p>
+                    <p class="card-header-title">${dateStamp} (${totalHours}/8 hours)</p>
                 </header>
                 <div class="card-content">
                     ${dateEntries.length ? dateEntries.map(entry => `
@@ -151,7 +152,7 @@ class WorkTimeTracker {
                 </div>
             `;
 
-            form.addEventListener('submit', (e) => this.handleNewEntry(e, date));
+            form.addEventListener('submit', (e) => this.handleNewEntry(e, dateStamp));
             card.appendChild(form);
 
             card.querySelectorAll('.edit-entry').forEach(button => {
@@ -170,7 +171,7 @@ class WorkTimeTracker {
             }
             grouped.get(entry.date)?.push(entry);
         }
-        return new Map([...grouped.entries()].sort((a, b) => new Date(b[0]).getTime() - new Date(a[0]).getTime()));
+        return new Map([...grouped.entries()].sort((a, b) => dayjs(b[0]).unix() - dayjs(a[0]).unix()));
     }
 
     private handleNewEntry(e: Event, date: string): void {

@@ -5,11 +5,11 @@
     "typescript": "^5.5.3"
   },
   "dependencies": {
-    "chart.js": "^4.4.3"
+    "chart.js": "^4.4.3",
+    "dayjs": "^1.11.13"
   },
   "name": "esoteric-time-tracking",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
